@@ -1,5 +1,7 @@
 # GPT-4, LangChain & Chroma - Create a ChatGPT Chatbot for Your PDF Files
 
+**NOTE: The logic in the codebase is mostly outddated. To see the latest version of the ai pdf chatbot look at the main branch [here](https://github.com/mayooear/ai-pdf-chatbot-langchain)**
+
 Use the new GPT-4 api to build a chatGPT chatbot for multiple Large PDF files.
 
 Tech stack used includes LangChain, Chroma, Typescript, Openai, and Next.js. LangChain is a framework that makes it easier to build scalable AI/LLM apps and chatbots. Chroma is a vectorstore for storing embeddings and your PDF in text to later retrieve similar docs.
