@@ -1,11 +1,9 @@
-// app/api/ingest/route.ts
 import { indexConfig } from '@/constants/graphConfigs';
 import { langGraphServerClient } from '@/lib/langgraph-server';
 import { processPDF } from '@/lib/pdf';
 import { Document } from '@langchain/core/documents';
 import { NextRequest, NextResponse } from 'next/server';
 
-// Configuration constants
 const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB
 const ALLOWED_FILE_TYPES = ['application/pdf'];
 
@@ -14,8 +12,7 @@ export async function POST(request: NextRequest) {
     if (!process.env.LANGGRAPH_INGESTION_ASSISTANT_ID) {
       return NextResponse.json(
         {
-          error:
-            'LANGGRAPH_INGESTION_ASSISTANT_ID is not set in your environment variables',
+          error:'LANGGRAPH_INGESTION_ASSISTANT_ID is not set in env var',
         },
         { status: 500 },
       );

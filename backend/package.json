@@ -27,6 +27,7 @@
   "dependencies": {
     "@langchain/community": "^0.3.26",
     "@langchain/core": "^0.3.32",
+    "@langchain/google-genai": "^0.2.8",
     "@langchain/langgraph": "^0.2.41",
     "@langchain/langgraph-cli": "^0.0.1",
     "@langchain/langgraph-sdk": "^0.0.36",

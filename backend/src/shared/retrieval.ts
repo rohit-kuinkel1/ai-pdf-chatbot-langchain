@@ -1,5 +1,6 @@
 import { VectorStoreRetriever } from '@langchain/core/vectorstores';
 import { OpenAIEmbeddings } from '@langchain/openai';
+//import { GoogleGenerativeAIEmbeddings } from "@langchain/google-genai";
 import { SupabaseVectorStore } from '@langchain/community/vectorstores/supabase';
 import { PGVectorStore } from '@langchain/community/vectorstores/pgvector';
 import { createClient as supabaseCreateClient } from '@supabase/supabase-js';
@@ -11,6 +12,11 @@ import {BaseConfigurationAnnotation, ensureBaseConfiguration} from './configurat
 const embeddings = new OpenAIEmbeddings({
   model: 'text-embedding-3-small',
 });
+
+// const embeddings = new GoogleGenerativeAIEmbeddings({
+//   apiKey: process.env.GOOGLE_API_KEY,
+//   modelName: "embedding-001",
+// });
 
 export async function makeSupabaseRetriever(configuration: typeof BaseConfigurationAnnotation.State): Promise<VectorStoreRetriever> {
   if (!process.env.SUPABASE_URL || !process.env.SUPABASE_SERVICE_ROLE_KEY) {

@@ -40,6 +40,8 @@ apps/docs/public/registry/
 
 # env
 .env
+backend/.env
+frontend/.env
 
 # cursor
 .cursor
