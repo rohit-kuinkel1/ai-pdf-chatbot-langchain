@@ -6,18 +6,15 @@ import { RunnableConfig } from '@langchain/core/runnables';
 import { StateGraph, END, START } from '@langchain/langgraph';
 import fs from 'fs/promises';
 
-import { IndexStateAnnotation } from './state.js';
+import { reduceDocs } from '../shared/state.js';
 import { makeRetriever } from '../shared/retrieval.js';
+import { IndexStateAnnotation } from './state.js';
 import {
   ensureIndexConfiguration,
   IndexConfigurationAnnotation,
 } from './configuration.js';
-import { reduceDocs } from '../shared/state.js';
 
-async function ingestDocs(
-  state: typeof IndexStateAnnotation.State,
-  config?: RunnableConfig,
-): Promise<typeof IndexStateAnnotation.Update> {
+async function ingestDocs(state: typeof IndexStateAnnotation.State, config?: RunnableConfig): Promise<typeof IndexStateAnnotation.Update> {
   if (!config) {
     throw new Error('Configuration required to run index_docs.');
   }
@@ -43,8 +40,8 @@ async function ingestDocs(
   return { docs: 'delete' };
 }
 
-// Define the graph
-const builder = new StateGraph(
+//define the graph
+const stateGraph = new StateGraph(
   IndexStateAnnotation,
   IndexConfigurationAnnotation,
 )
@@ -52,7 +49,7 @@ const builder = new StateGraph(
   .addEdge(START, 'ingestDocs')
   .addEdge('ingestDocs', END);
 
-// Compile into a graph object that you can invoke and deploy.
-export const graph = builder
-  .compile()
-  .withConfig({ runName: 'IngestionGraph' });
+//compile into a graph object that we can invoke and deploy.
+export const graph = stateGraph
+                    .compile()
+                    .withConfig({ runName: 'IngestionGraph' });

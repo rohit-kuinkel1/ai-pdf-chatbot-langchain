@@ -14,9 +14,7 @@ export default {
       },
     ],
   },
-  // Test configuration
   testMatch: ['**/__tests__/**/*.test.ts'],
-  // Coverage configuration
   collectCoverageFrom: [
     'src/**/*.{ts,tsx}',
     '!src/**/*.d.ts',
@@ -32,6 +30,5 @@ export default {
     },
   },
   coverageDirectory: 'coverage',
-  // Helpful test output
   verbose: true,
 };

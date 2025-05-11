@@ -5,7 +5,7 @@ import {
   ensureBaseConfiguration,
 } from '../shared/configuration.js';
 
-// This file contains sample documents to index, based on the following LangChain and LangGraph documentation pages:
+// Note: This file contains sample documents to index, based on the following LangChain and LangGraph documentation pages:
 const DEFAULT_DOCS_FILE = './src/sample_docs.json';
 
 /**
@@ -27,13 +27,8 @@ export const IndexConfigurationAnnotation = Annotation.Root({
  * @param config - The configuration object to use.
  * @returns An instance of typeof IndexConfigurationAnnotation.State with the specified configuration.
  */
-export function ensureIndexConfiguration(
-  config: RunnableConfig,
-): typeof IndexConfigurationAnnotation.State {
-  const configurable = (config?.configurable || {}) as Partial<
-    typeof IndexConfigurationAnnotation.State
-  >;
-
+export function ensureIndexConfiguration(config: RunnableConfig): typeof IndexConfigurationAnnotation.State {
+  const configurable = (config?.configurable || {}) as Partial<typeof IndexConfigurationAnnotation.State>;
   const baseConfig = ensureBaseConfiguration(config);
 
   return {

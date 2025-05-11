@@ -3,12 +3,12 @@ import { Document } from '@langchain/core/documents';
 /**
  * Represents the state of the retrieval graph / agent.
  */
-export type documentType =
-  | PDFDocument[]
-  | { [key: string]: any }[]
-  | string[]
-  | string
-  | 'delete';
+export type documentType = PDFDocument[] 
+                          | { [key: string]: any }[] 
+                          | string[] 
+                          | string 
+                          | 'delete';
+
 export interface AgentState {
   query?: string;
   route?: string;
@@ -59,9 +59,9 @@ export type PDFDocument = Document & {
 export interface BaseConfiguration {
   /**
    * The vector store provider to use for retrieval.
-   * @default 'supabase'
+   * @default 'postgres'
    */
-  retrieverProvider?: 'supabase';
+  retrieverProvider?: 'supabase' | 'postgres';
 
   /**
    * Additional keyword arguments to pass to the search function of the retriever for filtering.
@@ -78,7 +78,6 @@ export interface BaseConfiguration {
 }
 
 export interface AgentConfiguration extends BaseConfiguration {
-  // models
   /**
    * The language model used for processing and refining queries.
    * Should be in the form: provider/model-name.
