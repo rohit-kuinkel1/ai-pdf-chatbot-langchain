@@ -10,6 +10,7 @@
     "build": "tsc",
     "clean": "rm -rf dist",
     "demo": "npx tsx demo.ts",
+    "dev": "npx @langchain/langgraph-cli dev",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:changed": "jest --onlyChanged --passWithNoTests",
@@ -21,8 +22,7 @@
     "lint": "eslint src",
     "lint:fix": "eslint src --fix",
     "lint:langgraph-json": "node scripts/checkLanggraphPaths.js",
-    "lint:all": "yarn lint & yarn lint:langgraph-json",
-    "langgraph:dev": "npx @langchain/langgraph-cli dev"
+    "lint:all": "yarn lint & yarn lint:langgraph-json"
   },
   "dependencies": {
     "@langchain/community": "^0.3.26",
